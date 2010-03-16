@@ -1,0 +1,29 @@
+#####
+# DockButtons
+###########
+Style "DockButtons" !Title, !Handles, Sticky, WindowListSkip, \
+        CirculateSkip, BorderWidth 0, HandleWidth 0
+Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent
+  #, Shape dock-mask.xpm
+Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent
+
+DestroyModuleConfig DockButtons: *
+*DockButtons: Geometry 600x80
+*DockButtons: Colorset 15
+*DcokButtons: Rows 2
+*DockButtons: Columns 30
+*DockButtons: (1x2, Frame 0)
+*DockButtons: (4x2, Frame 0,  \
+  Action(Mouse 1) "FvwmATerm", Action(Mouse 3) "FvwmXTerm")
+*DockButtons: (4x2, Frame 0,  \
+  Action(Mouse 1) "FvwmFireFox")
+*DockButtons: (4x2, Frame 0,  \
+  Action(Mouse 1) "FvwmXmms")
+*DockButtons: (4x2, Frame 0,  \
+  Action(Mouse 1) "FvwmGimp")
+*DockButtons: (4x2, Frame 0,  \
+  Action(Mouse 1) "FvwmGVim")
+*DockButtons: (8x1, Frame 0, \
+  Swallow FvwmApplet-DigitalClock `FvwmScript $[fvwm_scrpt]/DigitalClock 16`)

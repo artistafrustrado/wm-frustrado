@@ -1,0 +1,46 @@
+DestroyModuleConfig TaskBar: *
+*TaskBar: Rows 1
+*TaskBar: Columns 3
+*TaskBar: (Panel(down, delay 0, steps 16) SubPanel "Module FvwmButtons SubPanel")
+#*TaskBar: (1x1, Swallow "stalontray" `Exec /usr/bin/stalonetray`)
+#*TaskBar: (1x1, Swallow (NoClose) "stalontray" "Exec stalonetray -bg '#FFCC00' --dbg-level 1 --parent-bg --icon-size 24 -geometry 24x$[trayer_width]-1+170 
+#--icon-gravity N'")
+#*TaskBar: (16x32, Frame 0, Swallow (NoClose,UseOld) "stalonetray" `systemtray -bg '#FFCC00'`)
+#*TaskBar: (1x1, Frame 0, Swallow (NoClose,UseOld) "stalonetray" "stalonetray -bg '#FFCC00'")
+#*TaskBar: (1x1, Swallow (NoClose,UseOld) "stalonetray" "stalonetray -bg '#FFCC00'")
+*TaskBar: (1x1, Swallow (NoClose, UseOld) `stalonetray` `Exec exec stalonetray -bg '#000000'`)
+*TaskBar: (1x1, Swallow "xclock" "Exec xclock -bg '#000000' -fg white -digital -face 'Aquafont:size=8' -strftime '%a, %d %b %Y %H:%M:%S' -geometry 250x25")
+*TaskBar: back black
+*TaskBar: fore	white
+*TaskBar: Frame 0
+
+
+#Module FvwmButtons -g 178x207 TaskBar
+#Module FvwmButtons -g 178x207-0+0 TaskBar
+#Module FvwmButtons -g 300x25-0+0 TaskBar
+DestroyFunc ShowTaskBarFunction
+AddToFunc ShowTaskBarFunction
+    + I Module FvwmButtons -g 500x25-100+0 TaskBar
+DestroyFunc HideTaskBarFunction
+AddToFunc HideTaskBarFunction
+    + I KillModule FvwmButtons TaskBar
+    + I Exec exec "killall -9 stalonetray" 
+
+
+#Style TaskBar StaysOnTop, GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, Sticky, geometry 300x100-175-0
+#Style TaskBar StaysOnTop, GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, Sticky, WindowListSkip, geometry -0-0 
+Style TaskBar StaysOnTop, GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, Sticky, WindowListSkip
+
+*SubPanel: Rows 5
+*SubPanel: Columns 1
+*SubPanel: (Icon mozilla-firefox.png, Action Exec iceweasel)
+*SubPanel: (Icon scribus-ng.png, Action scribus-ng)
+*SubPanel: (Icon gnome-gimp.png, Action Exec gimp)
+*SubPanel: (Icon inkscape.png, Action Exec inkscape)
+*SubPanel: (Icon vim.svg:50x50, Action Exec gvim)
+*SubPanel: back black
+*SubPanel: Frame 0
+*SubPanel: fore	white
+Style SubPanel StaysOnTop, GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, Sticky, NoHandles
+
+

@@ -1,0 +1,24 @@
+Atalhos de Teclado configurados para programas.
+
+F9                              ->  Mozilla Firefox
+F10                             ->  Mozilla Thunderbird
+F12                             ->  ATerm
+SHIFT + F12                     ->  ETerm
+ALT + F12                       ->  XTerm
+CTRL + F12                      ->  MRXVT
+ALT + F10                       ->  konsole
+
+CTRL + ALT + ESPAÇO             ->  GMRun
+Windows + L                     ->  XAutoLock
+CTRL + ESPAÇO                   ->  Apaga Histórico do CenterICQ
+CTRL + ALT  + SHIFT + ESPAÇO    ->  Mostra e Esconde Relógio
+Windows + C                     ->  Mostra e Esconde Calendário
+ALT + PrintScreen               ->  Tira ScreenShot da Janela Ativa
+PrintScreen                     ->  Tira ScreenShot do Desktop
+
+Windows + F9                    ->  Volta uma Música no XMMS
+Windows + F10                   ->  Play ou Pause no XMMS
+Windows + F11                   ->  Stop no XMMS
+Windows + F12                   ->  Avança uma Música no XMMS
+Windows + =                     ->  Aumenta o Volume no XMMS
+Windows + -                     ->  Diminui o Volume no XMMS

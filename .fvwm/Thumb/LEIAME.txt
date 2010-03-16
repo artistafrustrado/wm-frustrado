@@ -1,0 +1,9 @@
+Esse programa foi retirado do endereço http://fvwm.lair.be/viewtopic.php?t=190.
+
+Comando para compilação:
+
+gcc -Wall -Werror -o Thumb Thumb.c `imlib2-config --cflags` `imlib2-config --libs`
+
+Dependências:
+
+aptitude install libimlib2 libimlib2-dev.

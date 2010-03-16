@@ -1,0 +1,1 @@
+/usr/bin/aterm -tr -fg green -cr green -sh 45% +sb -fn 8x13 -sl 1000

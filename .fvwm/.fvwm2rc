@@ -1,0 +1,680 @@
+# Arquivo de configuração do FVWM2.
+# Gentil de Bortoli Júnior <gentiljunior arrôba bortoli ponto com ponto bêérre>
+# Versão: 1.7
+# Data: 18/07/2005.
+
+# FVWM 2.5.12 compiled on Mar 18 2005 at 00:50:43.
+# Support for: ReadLine, RPlay, Stroke, XPM, PNG, Shape, XSHM, SM,
+# Bidi Text, Xinerama, XRender, XFT, NLS.
+# Debian 3.1 (Sarge)
+
+# TO DO:
+# - Utilizar FvwmForms para substituir o script ScreenShot.sh;
+# - Função para lembrar o papel de parede selecionado;
+# - Exibir ícones nos menus.
+
+# Abaixo está uma lista de programas/pacotes utilizados.
+# Nenhum deles é obrigatório. A lista serve apenas para indicar
+# quais programas devem estar presentes para que essa configuração
+# em particular tenha maiores chances de funcionar imediatamente.
+# Não modifique o formato abaixo pois ele é lido pelo script Check.sh.
+#
+#I
+#xmms xmms-osd-plugin xmms-shell
+#gmrun
+#xterm aterm eterm mrxvt
+#mozilla-firefox mozilla-thunderbird
+#xtrlock xautolock
+#xosd-bin xfonts-artwiz xfe
+#tdl
+#F
+
+# Arquivos contidos dentro do diretório "Scripts".
+# As dependências de cada script estão relacionadas em seus
+# respectivos arquivos.
+#
+# Os scripts OSD_Clock e Calendar.sh foram baseados 
+# no script clock.sh do Lyra <http://lyra.soueu.com.br>.
+
+# Para quem usa Debian, o script Check.sh verifica 
+# se os pacotes necessários estão instalados.
+
+# - Check.sh
+# - OSD_Clock.sh
+# - OSD_Log.sh
+# - ScreenShot.sh
+# - TORSMO.sh
+# - Calendar.sh
+# - Purge_ICQ_History.sh
+# - XAutoLock.sh
+
+##########################
+# INÍCIO DA CONFIGURAÇÃO #
+##########################
+
+###################################
+# DEFINIÇÃO DE VARIÁVEIS INTERNAS #
+###################################
+
+SetEnv fvwm_home        $[HOME]/.fvwm
+SetEnv fvwm_apps        $[fvwm_home]/Apps
+SetEnv fvwm_scripts     $[fvwm_home]/Scripts
+SetEnv fvwm_themes      $[fvwm_home]/Themes
+SetEnv fvwm_windows     $[fvwm_themes]/Windows
+SetEnv fvwm_wallpapers  $[HOME]/Documents/Wallpapers
+SetEnv fvwm_thumbnailer $[fvwm_home]/Thumb/Thumb
+SetEnv fvwm_thumbnails  $[fvwm_home]/Thumb/Temp
+
+SetEnv fvwm_icon $[fvwm_home]/icons
+ImagePath $[fvwm_icon]:$[fvwm_icon];.png:/usr/share/pixmaps:+
+
+
+# Tamanho do ícone de uma janela minimizada, quando essa função
+# estiver ativa.
+#SetEnv fvwm_miniicon    96
+SetEnv fvwm_miniicon    25
+
+# Decoração de janelas a ser utilizada.
+# Opções: FluxboxStyle, QNXStyle, SimpleStyle, SimplestStyle. 
+
+#SetEnv fvwm_window      "SimpleStyle"
+#SetEnv fvwm_window      "FluxboxStyle"
+#SetEnv fvwm_window      "SimplestStyle"
+#SetEnv fvwm_window      "PureStyle"
+SetEnv fvwm_window      "MyDecor"
+#SetEnv fvwm_window      "UkkostaDecor"
+
+# Seta a "resistência" empregada ao tentar mover o mouse
+# ou uma janela, respectivamente, através das páginas de 
+# um desktop.
+EdgeResistance 250 10
+
+# Seta o quanto uma página deve ser deslocada quando o mouse
+# atingir os limites horizontais ou verticais, respectivamente.
+# 0 e 0 desativa essa opção, significando que o mouse não passará
+# para outra página a menos que esteja movendo uma janela.
+EdgeScroll 0 0
+
+# Seta a largura ou altura do contorno invisível que o FVWM cria
+# ao redor de cada página, a fim de detectar quando o mouse atinge
+# os limites horizontais ou verticais de uma página.
+EdgeThickness 1
+
+# Seta o tamanho máximo de uma janela a partir do qual seu
+# conteúdo será mostrado ao movê-la.
+# 0 significa que todas as janelas mostrarão apenas seu "contorno"
+# ao serem movidas. "Unlimited" significa que todas as janelas 
+# mostrarão seu conteúdo ao serem movidas.
+OpaqueMoveSize 0
+
+# Define o nome de um desktop ligado a determinado número.
+DeskTopName 0 Linux
+DeskTopName 1 Work 
+DeskTopName 2 Leasure
+
+# Define quantas páginas cada desktop terá.
+# Colunas x Linhas.
+# +-----+-----+-----+-----+-----+
+# | 0 0 | 1 0 | 2 0 | 3 0 | 4 0 |
+# +-----+-----+-----+-----+-----+
+# | 0 1 | 1 1 | 2 1 | 3 1 | 4 1 |
+# +-----+-----+-----+-----+-----+
+DeskTopSize 10x2
+
+# Faz com que as teclas Num Lock, Scroll Lock e Caps Lock
+# sejam ignoradas como modificadores. Isso resolve
+# o problema da FAQ 0.1 - http://www.fvwm.org/documentation/faq.
+IgnoreModifiers L25
+
+# Sintaxe: Key [(Janela)] <Nome da Tecla> <Contexto> <Modificadores> <Comando>
+# A combinação Alt+Tab mostrará apenas as janelas da página atual.
+Key Tab A M WindowList (CurrentPage) Root c c CurrentDesk, NoGeometry, CurrentAtEnd, IconifiedAtEnd
+
+# Faz com que a definição de cores seja aplicada sobre a janela
+# na qual o cursor do mouse está posicionado. Esse é o comportamento
+# padrão.
+ColormapFocus FollowsMouse
+
+# Faz com que uma janela seja atraída por outra ao aproximá-las. 
+# 15 = Pixels de distância para obter o efeito.
+# All = Provoca atração entre janelas e ícones e vice-versa.
+SnapAttraction 15 All
+
+#############
+# COLORSETS #
+#############
+# Servem para definir esquemas de cores que serão
+# aplicados às janelas, menus e demais componentes.
+
+#
+# Para o Pager.
+#
+# Cor de fundo das páginas não selecionadas e cor das divisões.
+Colorset 10 RootTransparent, Tint Blue 10, FG Blue
+#Colorset 10 FG White, BG Black
+
+# Cor de fundo da página selecionada.
+Colorset 11 RootTransparent, Tint Blue 25
+
+# Cor da janela com o foco.
+Colorset 12 RootTransparent, Tint Blue 100
+
+# Cor das janelas sem o foco.
+Colorset 13 RootTransparent, Tint Blue 60
+
+#
+# Para o Menu.
+#
+#Colorset 14 RootTransparent, FG Green, Tint Black 50, BGTint Black 50
+#Colorset 14 RootTransparent, FG White, Tint Black 15, BGTint Black 50
+Colorset 14 FG White, BG Black
+ 
+
+#
+# Para ícones de janelas minimizadas.
+#
+# Cor da descrição do ícone inativo.
+Colorset 15 RootTransparent, Tint Orange 100, FG White
+
+# Cor da descrição do ícone ativo.
+Colorset 16 RootTransparent, Tint Green 50, FG White
+
+#########################
+# DECORAÇÕES DE JANELAS #
+#########################
+
+#Read $[fvwm_home]/.fvwm2rc_windows
+Read sandbox_deco
+
+###########
+# ESTILOS #
+###########
+
+#
+# Define o padrão (*) de comportamento e exibição dos menus.
+#
+MenuStyle * ActiveFore Orange, Hilight3DOff
+MenuStyle * BorderWidth 1, Animation, TrianglesSolid, TitleUnderlines2, SeparatorsShort
+#MenuStyle * Font Snap
+MenuStyle * MenuColorset 14
+
+#
+# Define o padrão (*) de comportamento e exibição das as janelas.
+#
+Style * SloppyFocus, MouseFocusClickRaises, DecorateTransient
+
+# IconBox [Screen] Left Top Right Bottom
+
+# 1280x1024
+# Style * IconBox 990x50+0+975
+
+# 1024x768
+#Style * IconBox 745x50+0+718
+#Style * IconBox 745x50+0+7181 , IconFill
+Style * IconBox 745x25+0+7181 , IconFill
+
+#
+# Decoração que será usada.
+#
+Style * UseStyle $[fvwm_window]
+
+#
+# Para a descrição de ícones de janelas minimizadas.
+#
+Style * IconTitle, IconTitleColorset 15, HilightIconTitleColorset 16, IconTitleRelief 0
+Style * IconFont Snap
+
+# Define o padrão de comportamento e exibição desses programas, especificamente.
+
+Style "MPlayer"         GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0
+Style "MPlayer - Video" Title, BorderWidth 1, HandleWidth 1
+
+Style "xmms"            StartsOnPage 6 3
+Style "xmms"            NoTitle, BorderWidth 0, HandleWidth 0, StartsOnPage 4 3
+Style "audacious"       NoTitle, BorderWidth 0, HandleWidth 0, StartsOnPage 5 3
+Style "gmrun"           GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0
+Style "xcalc"           GrabFocus
+Style "gqview"          GrabFocus
+
+Style "xterm"           GrabFocus, ResizeHintOverride, Icon 48x48/terminal.png
+Style "aterm"           GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride
+
+Style "firefox-bin"     GrabFocus, BorderWidth 0, HandleWidth 0
+#Style "Mozilla-thunderbird-bin" GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 0
+Style "pidgin" 		GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, geometry 600x800-0-0
+Style "xchat" 		GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 6 1
+
+Style "gnome-panel"     GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, geometry 0,0
+Style "wmbattery"     	GrabFocus, NoTitle, BorderWidth 0, HandleWidth 0, ResizeHintOverride, Sticky, geometry 200x200-175-0
+
+
+read fvwm_taskbar
+#  175x50-0-0
+#############################################
+# ATALHOS DE TECLADO PARA INICIAR PROGRAMAS #
+#############################################
+
+# Para mapear uma tecla, caso seja necessário, utilizar o programa
+# "xev", juntamente com o programa "xmodmap" e seu arquivo ".Xmodmap",
+# além do arquivo ".xinitrc".
+
+# Sintaxe: Key [(Janela)] <Nome da Tecla> <Contexto> <Modificadores> <Comando>
+
+# "Contexto" especifica onde os atalhos serão aplicados.
+# R             - Desktop;
+# W             - Janela de aplicação;
+# D             - Aplicação de Desktop;
+# T             - Barra de título de uma janela;
+# S             - Barras laterais, superior ou inferior de uma janela;
+# [, ], -, _    - Barra esquerda, direita, superior ou inferior, isoladamente;
+# F             - Cantos de uma janela;
+# <, ^, >, v    - Cantos superiores esq. e dir. ou inferiores esq. e dir, isoladamente;
+# I             - Ícone de uma janela;
+# 0 a 9         - Botões da barra de título;
+# A             - Qualquer contexto.
+
+#+---------------------------------------------+
+#|                                +---+ +---+  | 
+#|    R         R          R      | I | | I |  |  
+#|                                +---+ +---+  | 
+#|                                             |
+#|    F         S          S          F        |
+#|    +-------------------------------+        | 
+#|    |13579    T          T     08642|        |
+#|    +-------------------------------+        | 
+#|    |                               |        | 
+#|    |                               |        | 
+#| R S|         W          W          |S   R   |
+#|    |                               |        | 
+#|    |                               |        | 
+#|    |                               |        | 
+#|    |                               |        | 
+#| R S|         W          W          |S   R   |
+#|    |                               |        |
+#|    |                               |        | 
+#|    |                               |        | 
+#|    +-------------------------------+        | 
+#|    F         S          S          F        |
+#|                                             | 
+#|              R          R          R        |
+#+---------------------------------------------+
+
+# "Modificadores" são as teclas que devem ser pressionadas em conjunto 
+# com a tecla principal ("Nome da Tecla").
+
+# Modificadores mais utilizados:
+# M - Alt
+# C - Ctrl
+# S - Shift
+# 4 - Tecla Windows
+# Qualquer combinação dessas teclas é permitida.
+# Essas informações valem também para o comando "Mouse".
+
+Key F1      A 4     Exec exec thunar
+Key F2      A 4     Exec exec gthumb
+Key F3      A 4     Exec exec mysql-query-browser
+Key F4      A 4     Exec exec glade-3
+Key F5      A 4     Exec exec oowriter 
+Key F6      A 4     Exec exec scribus 
+Key F7      A 4     Exec exec inkscape 
+Key F8      A 4     Exec exec gimp 
+Key F9      A 4     Exec exec iceweasel 
+#Key F10    A N     Exec exec gnome-terminal 
+Key F10     A 4     Exec exec konsole 
+Key F11     A 4     Exec exec xterm
+Key F12	    A 4     Exec exec  /opt/broffice.org3/program/swriter
+Key g       A 4     FvwmGimpGit 
+Key i       A 4     FvwmGimpGit 
+Key s       A 4     FvwmScribusSvn 
+Key x       A 4     FvwmXSane 
+Key c       A 4     FvwmXChat 
+Key p       A 4     FvwmPidgin 
+Key r       A 4     FvwmGrandr 
+Key q       A 4     Quit 
+
+# Ver funções no final do arquivo.
+#Key F12     A 4     FvwmATerm
+#Key F12     A M     FvwmXTerm
+#Key F12     A C     FvwmMRXVT
+
+Key Space   A CM    Exec exec gmrun
+
+# Esse atalho presume que o script XAutoLock.sh foi executado
+# corretamente no carregamento do FVWM.
+Key L       A 4     FvwmXLocker
+
+# Taskbar
+Key 1       A 4     ShowTaskBarFunction
+Key 2       A 4     HideTaskBarFunction
+
+#Key Space   A C     Exec exec $[fvwm_scripts]/Purge_ICQ_History.sh
+Key Space   A CMS   Exec exec $[fvwm_scripts]/OSD_Clock.sh
+Key C       A 4     Exec exec $[fvwm_scripts]/Calendar.sh
+#Key Print   A A     Exec exec $[fvwm_scripts]/ScreenShot.sh $[w.id]
+#Key Print   A N     Exec exec $[fvwm_scripts]/ScreenShot.sh
+
+# XMMS
+#Key F9      A 4     Exec exec gimp 
+#Key F11      A 4	    FvwmIconfy 
+#Key F9      A 4     Exec exec xmms --rew
+#Key F10     A 4     Exec exec xmms --play-pause
+#Key F11     A 4     Exec exec xmms --stop
+#Key F12     A 4     Exec exec xmms --fwd
+#Key Equal   A 4     Exec exec xmms-shell -e +
+#Key Minus   A 4     Exec exec xmms-shell -e -
+
+
+########################
+# ATALHOS PARA O MOUSE #
+########################
+
+# Sintaxe: Key [(Janela)] <Nome da Tecla> <Contexto> <Modificadores> <Comando>
+
+# XMMS
+# Aumenta ou Diminui o volume no XMMS utilizando a "rodinha" do mouse.
+Mouse 4 R       M   Exec exec xmms-shell -e + 
+Mouse 5 R       M   Exec exec xmms-shell -e - 
+
+# Para o desktop.
+Mouse 1 R       N   Menu RootMenu Nop
+Mouse 2 R       N   Menu Window-Ops Nop
+Mouse 3 R       A   StrokeFunc FeedBack DrawMotion StrokeWidth 2
+
+# Para trocar de página com a "rodinha" do mouse.
+Mouse 4 A       M   Scroll +100000 +0
+Mouse 5 A       M   Scroll -100000 +0
+
+# Para ver os menus sem precisar clicar no desktop.
+Mouse 1 RFSTW   CS  Menu RootMenu Nop
+Mouse 2 RFSTW   CS  Menu Window-Ops Nop
+Mouse 3 RFSTW   CS  Menu MenuFvwmRoot Nop
+
+# Para as janelas sem bordas (principalmente).
+Mouse 1 WTFSI   4   AnimatedMove
+Mouse 3 WTFSI   4   Resize
+
+# Para os botões da barra de título.
+# Isso também é o que faz com que esses botões apareçam.
+# Ordem dos botões: 1 3 5 7 9    0 8 6 4 2
+Mouse 0 1       A   Menu Window-Ops
+Mouse 0 6       A   Iconify
+Mouse 0 4       A   MyMaximize
+Mouse 1 2       A   Close
+
+# Para recuperar uma janela minimizada.
+Mouse 1 I       A   Iconify Off
+
+# Comandos acionados com o traçado do mouse.
+# Sintaxe: [(Janela)] <Seqüencia> <Botão> <Contexto> <Modificadores> <Comando>
+Stroke N654     0 R N  GoToPage2 Wrapx Wrapy -1p +0p
+Stroke N456     0 R N  GoToPage2 Wrapx Wrapy +1p +0p
+Stroke N258     0 R N  GoToPage2 Wrapx Wrapy +0p -1p
+Stroke N852     0 R N  GoToPage2 Wrapx Wrapy +0p +1p
+
+Stroke N78963   0 R N  FvwmATerm
+Stroke N74123   0 R N  FvwmXLocker
+Stroke N14789   0 R N  Exec exec xfe
+
+#######################################################
+# TROCANDO AS PÁGINAS E MOVENDO JANELAS ENTRE PÁGINAS #
+#######################################################
+
+# Sintaxe: Key [(Janela)] <Nome da Tecla> <Contexto> <Modificadores> <Comando>
+
+# Passeia entre as páginas com as setas direcionais.
+# Wrapx e Wrapy permite navegar entre as páginas de maneira "circular".
+# 1 > 2 > 3 > 4 > 1 > 2 > 3 > 4 -- 4 > 3 > 2 > 1 > 4 > 3 > 2 > 1
+Key Left    A   CM  GoToPage2 Wrapx Wrapy -1p +0p 
+Key Right   A   CM  GoToPage2 Wrapx Wrapy +1p +0p
+Key Up      A   CM  GoToPage2 Wrapx Wrapy +0p -1p
+Key Down    A   CM  GoToPage2 Wrapx Wrapy +0p +1p
+
+# Vai diretamente para a página especificada.
+# +--------+------+----------+-----------+---------+
+# | Insert | Home | PageUp   | S. Insert | S. Home |
+# +--------+------+----------+-----------+---------+
+# | Delete | End  | PageDown | S. Delete | S. End  |
+# +--------+------+----------+-----------+---------+
+# Simulando meu Desktop 5x2.
+
+Key Insert  A   4   GoToPage2 0 0
+Key Home    A   4   GoToPage2 1 0
+Key Prior   A   4   GoToPage2 2 0
+Key Insert  A   4C  GoToPage2 3 0
+Key Home    A   4C  GoToPage2 4 0
+
+Key Delete  A   4   GoToPage2 0 1
+Key End     A   4   GoToPage2 1 1
+Key Next    A   4   GoToPage2 2 1
+Key Delete  A   4C  GoToPage2 3 1
+Key End     A   4C  GoToPage2 4 1
+
+# Move a janela para a página especificada e vai atrás.
+Key Insert  A   4S  MoveAndGotoPage 0 0
+Key Home    A   4S  MoveAndGotoPage 1 0
+Key Prior   A   4S  MoveAndGotoPage 2 0
+Key Insert  A   4CS MoveAndGotoPage 3 0
+Key Home    A   4CS MoveAndGotoPage 4 0
+
+Key Delete  A   4S  MoveAndGotoPage 0 1
+Key End     A   4S  MoveAndGotoPage 1 1
+Key Next    A   4S  MoveAndGotoPage 2 1
+Key Delete  A   4CS MoveAndGotoPage 3 1
+Key End     A   4CS MoveAndGotoPage 4 1
+
+# Move a janela para pontos específicos da tela.
+# Warp faz com que o cursor do mouse acompanhe o
+# movimento.
+Key KP_Home  A 4  AnimatedMove  0  0 Warp
+Key KP_End   A 4  AnimatedMove  0 -0 Warp
+Key KP_Prior A 4  AnimatedMove -0  0 Warp
+Key KP_Next  A 4  AnimatedMove -0 -0 Warp
+
+# Tira a janela do caminho.
+#Key Left  FSTW SCM PipeRead "echo MoveToPage $$$$[$$[page.nx]-1] $$[page.ny]"
+#Key Right FSTW SCM PipeRead "echo MoveToPage $$$$[$$[page.nx]+1] $$[page.ny]"
+#Key Up    FSTW SCM PipeRead "echo MoveToPage $$[page.nx] $$$$[$$[page.ny]-1]"
+#Key Down  FSTW SCM PipeRead "echo MoveToPage $$[page.nx] $$$$[$$[page.ny]+1]"
+
+Key M       A   4 AnimatedMove
+Key R       A   4 Resize
+Key I       A   4 Iconify
+Key S       A   4 Stick
+
+# Jeitos de maximizar as janelas.
+Key Left    A 4 HorizontalMax
+Key Right   A 4 HorizontalMax
+Key Up      A 4 MyMaximize
+Key Down    A 4 VerticalMax
+
+# Full Screen
+Key F       A 4 Maximize
+
+# "Grow" significa que a janela será maximizada até encontrar algum obstáculo.
+Key Left    A S4 HorizontalGrowMax
+Key Right   A S4 HorizontalGrowMax
+Key Up      A S4 MyGrowMaximize
+Key Down    A S4 VerticalGrowMax
+
+#########################
+# CONFIGURAÇÃO DO PAGER #
+#########################
+
+# Define como e onde o Pager deve ser exibido.
+Style FvwmPager Sticky, NoTitle, HandleWidth 0
+ 
+#*FvwmPager: Geometry 175x50-0-0
+#*FvwmPager: Geometry 225x50-0-0
+*FvwmPager: Geometry 250x25-0-0
+*FvwmPager: Colorset * 10
+*FvwmPager: HilightColorset * 11
+*FvwmPager: WindowColorsets 13 12
+ 
+*FvwmPager: Font None
+
+*FvwmPager: UseSkipList
+*FvwmPager: WindowBorderWidth 1
+
+######################
+# DEFINIÇÃO DE MENUS #
+######################
+
+Read $[fvwm_home]/.fvwm2rc_menus
+
+########################
+# DEFINIÇÃO DE FUNÇÕES #
+########################
+
+AddToFunc InitFunction
+    + I Module FvwmPager
+    + I Module FvwmEvent
+#   + I CleanThumbnailsDir
+    + I Exec exec Exec $[fvwm_scripts]/wallpaper.sh  
+    + I Exec exec $[fvwm_scripts]/TORSMO.sh
+    + I Exec exec $[fvwm_scripts]/Init.sh
+   
+AddToFunc RestartFunction
+    + I Module FvwmPager
+    + I Module FvwmEvent
+
+#
+# Funções para o Menu.
+#
+#
+# Ver arquivo $[fvwm_home]/.fvwm2rc_menus.
+
+#
+# Funções para outras coisas...
+#
+
+# 50 é a mesma altura configurada para o Pager.
+# Isso impede que uma janela maximizada por essa função
+# fique sobre ele.
+AddToFunc MyMaximize
+#    + I Maximize 100 -50p
+    + I Maximize 100 -25p
+
+AddToFunc VerticalMax
+#    + I Maximize 0 -50p
+    + I Maximize 0 -25p
+
+AddToFunc HorizontalMax
+    + I Maximize 100 0
+
+AddToFunc MyGrowMaximize
+    + I Maximize grow grow
+
+AddToFunc VerticalGrowMax
+    + I Maximize 0 grow
+
+AddToFunc HorizontalGrowMax
+    + I Maximize grow 0
+
+AddToFunc MoveAndGotoPage
+    + I MoveToPage $*
+    + I GoToPage $*
+
+#DestroyFunc ExpandAndRun
+#AddToFunc   ExpandAndRun
+#   + I PipeRead `echo '$*'`
+
+# Função para exibir o nome do desktop e o número da página, 
+# a cada mudança de página.
+AddToFunc GoToPage2
+    + I GoToPage $*
+#   + I Exec exec echo $[page.nx] $[page.ny] | osd_cat --delay=1 --align=center --offset=100
+#   + I ExpandAndRun Exec exec echo $$$$[desk.name$[desk.n]] | osd_cat --delay=1 --align=center --offset=80
+
+#
+# Funções para iniciar programas.
+#
+
+DestroyFunc FvwmATerm
+AddToFunc   FvwmATerm
+    + I Exec exec aterm -tr -fg green -cr green -sh 45% +sb -fn 8x13 -sl 1000
+
+DestroyFunc FvwmXTerm
+AddToFunc   FvwmXTerm
+    + I Exec exec xterm
+
+DestroyFunc FvwmXLocker
+AddToFunc   FvwmXLocker
+
+DestroyFunc FvwmIconfy
+AddToFunc FvwmIconfy
++ I Iconfy 
+#    + I Exec exec xautolock -locknow
+
+DestroyFunc FvwmNitrogen
+AddToFunc   FvwmNitrogen
+    + I Exec exec nitrogen $[fvwm_wallpapers] 
+
+DestroyFunc FvwmGimpGit
+AddToFunc   FvwmGimpGit
+    + I Exec exec /opt/gimp-git/bin/gimp-2.7 
+
+DestroyFunc FvwmInkscapeSvn
+AddToFunc   FvwmInkscapeSvn
+    + I Exec exec /opt/inkscape-svn/bin/inkscape 
+
+DestroyFunc FvwmScribusSvn
+AddToFunc   FvwmScribusSvn
+    + I Exec exec /opt/scribus-svn/bin/scribus
+
+
+DestroyFunc FvwmXSane
+AddToFunc   FvwmXSane
+    + I Exec exec /usr/bin/xsane 
+
+DestroyFunc FvwmXChat
+AddToFunc   FvwmXChat
+    + I Exec exec /usr/bin/xchat 
+
+DestroyFunc FvwmPidgin
+AddToFunc   FvwmPidgin
+    + I Exec exec /usr/bin/pidgin 
+
+DestroyFunc FvwmGrandr
+AddToFunc   FvwmGrandr
+    + I Exec exec /usr/bin/grandr
+
+#
+# Thumbnails de janelas.
+#
+
+# Essa função utiliza o programa que está dentro do diretório
+# $[fvwm_home]/Thumb.
+
+# Esse PipeRead impede que seja gerado um novo Thumbnail, se
+# isso já foi feito antes. Isso ajuda no consumo de CPU, porém
+# impede que se tenha um Thumbnail mais atualizado da janela, já que
+# o processo só será executado uma vez, quando a janela for criada.
+#
+# Na verdade, acho que isso não é muito útil. Qualquer hora eu paro 
+# para ver com mais calma.
+
+#DestroyFunc CreateWindowThumbnail
+#AddToFunc CreateWindowThumbnail
+#    + I ThisWindow (Raised, !Iconic, !Shaded, CurrentPage, !FvwmIdent)
+#    + I TestRc (NoMatch) Break
+##   + I PipeRead 'if [ -f $[fvwm_thumbnails]/$[w.id].png ]; then echo Break; fi' 
+#    + I WindowId $[w.id] Exec exec $[fvwm_thumbnailer] $[w.id] $[fvwm_miniicon] $[fvwm_thumbnails]/$[w.id].png
+#    + I WindowId $[w.id] WindowStyle IconOverride, Icon $[fvwm_thumbnails]/$[w.id].png, StaysOnBottom
+#
+#*FvwmEvent raise_window CreateWindowThumbnail
+#*FvwmEvent focus_change CreateWindowThumbnail
+#
+#*FvwmEvent destroy_window   DestroyWindowThumbnail
+#*FvwmEvent deiconify        DestroyWindowThumbnail
+#
+#DestroyFunc DestroyWindowThumbnail
+#AddToFunc   DestroyWindowThumbnail
+#    + I Iconify Off
+#    + I DestroyWindowStyle
+#    + I Exec exec rm -f $[fvwm_thumbnails]/$[w.id].png
+#
+#DestroyFunc CleanThumbnailsDir
+#AddToFunc   CleanThumbnailsDir
+#    + I Exec exec rm -f $[fvwm_thumbnails]/*
+
+Read autohide

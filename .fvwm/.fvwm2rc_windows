@@ -1,0 +1,204 @@
+# Esse arquivo contém as definições para as decorações das janelas.
+
+# As decorações Fluxbox e QNX foram baseada nos Pixmaps encontrados na página da
+# Suzanne Skinner - http://ironphoenix.org/tril/fvwm/configs/fvwm-theme.
+
+#####################################################################
+#####################################################################
+#####################################################################
+
+DestroyDecor Fluxbox
+AddToDecor   Fluxbox
++ TitleStyle LeftJustified Height 14
++ ButtonStyle 1 \
+    ActiveUp    (Pixmap $[fvwm_windows]/Fluxbox/options_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/Fluxbox/options_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/Fluxbox/options_inactive.xpm -- Flat)
++ ButtonStyle 6 \
+    ActiveUp    (Pixmap $[fvwm_windows]/Fluxbox/iconify_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/Fluxbox/iconify_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/Fluxbox/iconify_inactive.xpm -- Flat)
++ ButtonStyle 4 \
+    ActiveUp    (Pixmap $[fvwm_windows]/Fluxbox/maximize_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/Fluxbox/maximize_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/Fluxbox/maximize_inactive.xpm -- Flat)
++ ButtonStyle 2 \
+    ActiveUp    (Pixmap $[fvwm_windows]/Fluxbox/close_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/Fluxbox/close_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/Fluxbox/close_inactive.xpm -- Flat)
++ TitleStyle AllActive MultiPixmap \
+    Main AdjustedPixmap $[fvwm_windows]/Fluxbox/title_active.xpm -- Flat
++ TitleStyle AllInactive MultiPixmap \
+    Main AdjustedPixmap $[fvwm_windows]/Fluxbox/title_inactive.xpm -- Flat
++ BorderStyle -- HiddenHandles
+
+#
+# Definindo demais características para a decoração Fluxbox.
+#
+# ForeColor  : Cor do título da janela inativa.
+# BackColor  : Cor da borda da janela inativa.
+# HilightFore: Cor do título da janela ativa.
+# HilightBack: Cor da borda da janela ativa.
+Style FluxboxStyle \
+    UseDecor Fluxbox, \
+    Colorset, BorderColorset, \
+    HilightColorset, HilightBorderColorset, \
+    BorderWidth 1, HandleWidth 1, \
+    Font Snap, \
+    ForeColor #C0C0C0, \
+    BackColor #C0C0C0, \
+    HilightFore #FFFFFF, \
+    HilightBack #C0C0C0
+
+#####################################################################
+#####################################################################
+#####################################################################
+
+DestroyDecor QNX
+AddToDecor   QNX
++ TitleStyle LeftJustified Height 20
++ ButtonStyle 1 \
+    ActiveUp    (Pixmap $[fvwm_windows]/QNX/options_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/QNX/options_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/QNX/options_inactive.xpm -- Flat)
++ ButtonStyle 6 \
+    ActiveUp    (Pixmap $[fvwm_windows]/QNX/iconify_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/QNX/iconify_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/QNX/iconify_inactive.xpm -- Flat)
++ ButtonStyle 4 \
+    ActiveUp    (Pixmap $[fvwm_windows]/QNX/maximize_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/QNX/maximize_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/QNX/maximize_inactive.xpm -- Flat)
++ ButtonStyle 2 \
+    ActiveUp    (Pixmap $[fvwm_windows]/QNX/close_activeup.xpm -- Flat) \
+    ActiveDown  (Pixmap $[fvwm_windows]/QNX/close_activedown.xpm -- Flat) \
+    Inactive    (Pixmap $[fvwm_windows]/QNX/close_inactive.xpm -- Flat)
++ TitleStyle AllActive MultiPixmap \
+    Main AdjustedPixmap $[fvwm_windows]/QNX/title_active.xpm, \
+    LeftEnd AdjustedPixmap $[fvwm_windows]/QNX/titleleft_active.xpm, \
+    RightEnd AdjustedPixmap $[fvwm_windows]/QNX/titleright_active.xpm -- Flat
++ TitleStyle AllInactive MultiPixmap \
+    Main AdjustedPixmap $[fvwm_windows]/QNX/title_inactive.xpm, \
+    LeftEnd AdjustedPixmap $[fvwm_windows]/QNX/titleleft_inactive.xpm, \
+    RightEnd AdjustedPixmap $[fvwm_windows]/QNX/titleright_inactive.xpm -- Flat
++ BorderStyle -- HiddenHandles !NoInset Raised
+
+#
+# Definindo demais características para a decoração QNX.
+#
+# ForeColor  : Cor do título da janela inativa.
+# BackColor  : Cor da borda da janela inativa.
+# HilightFore: Cor do título da janela ativa.
+# HilightBack: Cor da borda da janela ativa.
+Style QNXStyle \
+    UseDecor QNX, \
+    Colorset, BorderColorset, \
+    HilightColorset, HilightBorderColorset, \
+    BorderWidth 2, HandleWidth 2, \
+    Font -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*, \
+    ForeColor #000000, \
+    BackColor #808080, \
+    HilightFore #000000, \
+    HilightBack #909090
+
+#####################################################################
+#####################################################################
+#####################################################################
+
+# Essa decoração foi baseada em idéias encontradas em 
+# http://www.zensites.net/fvwm/guide/window.html e
+# http://www.fvwm.org/screenshots/windowdecors/simple.
+
+DestroyDecor SimpleDecor
+AddToDecor SimpleDecor
++ TitleStyle LeftJustified  Height 16
++ TitleStyle Active         VGradient 64 Gray Black -- Flat
++ TitleStyle ActiveUp       VGradient 64 Gray Black -- Flat
++ TitleStyle ActiveDown     VGradient 64 Gray Black -- Flat
++ TitleStyle Inactive       VGradient 64 Gray Black -- Flat
++ ButtonStyle 1 MiniIcon -- Flat
+#+ ButtonStyle 1 Vector 5 45x45@1 55x45@1 55x55@0 45x55@0 45x45@1 -- Flat
++ ButtonStyle 6 ActiveUp   Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
++ ButtonStyle 6 ActiveDown Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
++ ButtonStyle 6 Inactive   Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
+#+ ButtonStyle 6 ActiveUp   Vector 10 40x55@1 40x80@0 15x80@0 15x55@1 40x55@1 30x55@1 30x30@1 70x30@1 70x70@1 45x70@1 -- Flat
+#+ ButtonStyle 6 ActiveDown Vector 10 40x55@1 40x80@0 15x80@0 15x55@1 40x55@1 30x55@1 30x30@1 70x30@1 70x70@1 45x70@1 -- Flat
+#+ ButtonStyle 6 Inactive   Vector 10 40x55@1 40x80@0 15x80@0 15x55@1 40x55@1 30x55@1 30x30@1 70x30@1 70x70@1 45x70@1 -- Flat
++ ButtonStyle 4 ActiveUp   Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
++ ButtonStyle 4 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
++ ButtonStyle 4 Inactive   Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
+#+ ButtonStyle 4 ActiveUp   Vector 10 25x40@1 20x40@1 20x80@1 60x80@1 60x65@1 35x65@0 85x65@0 85x10@0 30x10@1 30x65@1 -- Flat
+#+ ButtonStyle 4 ActiveDown Vector 10 25x40@1 20x40@1 20x80@1 60x80@1 60x65@1 35x65@0 85x65@0 85x10@0 30x10@1 30x65@1 -- Flat
+#+ ButtonStyle 4 Inactive   Vector 10 25x40@1 20x40@1 20x80@1 60x80@1 60x65@1 35x65@0 85x65@0 85x10@0 30x10@1 30x65@1 -- Flat
++ ButtonStyle 2 ActiveUp   Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle 2 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle 2 Inactive   Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle All -- UseTitleStyle
++ BorderStyle -- HiddenHandles
+
+#
+# Definindo demais características para a decoração Simple.
+#
+# ForeColor  : Cor do título da janela inativa.
+# BackColor  : Cor da borda da janela inativa.
+# HilightFore: Cor do título da janela ativa.
+# HilightBack: Cor da borda da janela ativa.
+Style SimpleStyle \
+    UseDecor SimpleDecor, \
+    Colorset, BorderColorset, \
+    HilightColorset, HilightBorderColorset, \
+    BorderWidth 1, HandleWidth 1, \
+    Font Snap, \
+    ForeColor Black, \
+    BackColor Black, \
+    HilightFore White, \
+    HilightBack Gray, \
+    MiniIcon $[fvwm_windows]/Simple/Terminal.xpm
+    
+#####################################################################
+#####################################################################
+#####################################################################
+
+DestroyDecor SimplestDecor
+AddToDecor SimplestDecor
++ TitleStyle LeftJustified
++ TitleStyle ActiveUp   (TiledPixmap $[fvwm_windows]/Simplest/title.xpm -- Flat)
++ TitleStyle ActiveDown (TiledPixmap $[fvwm_windows]/Simplest/title.xpm -- Flat)
++ TitleStyle Inactive   (TiledPixmap $[fvwm_windows]/Simplest/title.xpm -- Flat)
++ ButtonStyle 1 (TiledPixmap $[fvwm_windows]/Simplest/button1.xpm -- Flat)
++ ButtonStyle 6 (TiledPixmap $[fvwm_windows]/Simplest/button6.xpm -- Flat)
++ ButtonStyle 4 (TiledPixmap $[fvwm_windows]/Simplest/button4.xpm -- Flat)
++ ButtonStyle 2 (TiledPixmap $[fvwm_windows]/Simplest/button2.xpm -- Flat)
++ BorderStyle -- HiddenHandles
+
+#
+# Definindo demais características para a decoração Simplest.
+#
+# ForeColor  : Cor do título da janela inativa.
+# BackColor  : Cor da borda da janela inativa.
+# HilightFore: Cor do título da janela ativa.
+# HilightBack: Cor da borda da janela ativa.
+Style SimplestStyle \
+    UseDecor SimplestDecor, \
+    Colorset, BorderColorset, \
+    HilightColorset, HilightBorderColorset, \
+    BorderWidth 1, HandleWidth 1, \
+    Font Snap, \
+    ForeColor Gray, \
+    BackColor Gray, \
+    HilightFore Black, \
+    HilightBack White
+
+Style PureStyle \
+    UseDecor SimplestDecor, \
+    Colorset, BorderColorset, \
+    HilightColorset, HilightBorderColorset, \
+    BorderWidth 1, HandleWidth 1, \
+    Font Snap, \
+    ForeColor Black, \
+    BackColor Black, \
+    HilightFore #EEEEEE, \
+    HilightBack White
+
+
+#read sandbox_deco

@@ -1,0 +1,131 @@
+# Esse arquivo contém as definições para os Menus.
+
+######################
+# DEFINIÇÃO DE MENUS #
+######################
+
+AddToMenu RootMenu "Root Menu" Title
+    + "Apps"                Popup ProgramMenu
+    + ""                    Nop
+    + "Debian"              Popup "/Debian"
+    + ""                    Nop
+    + "WallPapers"          Popup MenuWallPapers
+    + ""                    Nop
+    + "WallPapers Nitrogen" FvwmNitrogen
+    + ""                    Nop
+    + "Arrange (Cascade)"   Module FvwmRearrange -cascade
+    + "Arrange (Tile)"      Module FvwmRearrange -tile -h -mn 3 -animate
+    + ""                    Nop
+    + "FVWM"                Popup FVWM-Extras
+    + ""                    Nop
+    + "Quit or Restart"     Popup Quit-Verify
+
+AddToMenu MenuWallPapers "WallPapers" Title
+    + DynamicPopupAction Function MakeWallPapersMenu
+
+AddToMenu MenuWallPapersNitrogen "WallPapers Nitrogen" Title
+    + I FvwmNitrogen
+
+AddToMenu ProgramMenu "Apps" Title
+    + DynamicPopupAction Function MakeAppsMenu
+
+AddtoMenu FVWM-Extras "FVWM-Extras" Title
+    + "Fvwm Modules"        Popup Module-Popup
+    + "Refresh Screen"      Refresh
+
+AddToMenu Window-Ops "Windows Ops" Title
+    + "&Move"             AnimatedMove
+    + "&Resize"           Resize
+    + "R&aise"            Raise       
+    + "&Lower"            Lower       
+    + "(De)&Iconify"      Iconify     
+    + "(Un)&Stick"        Stick       
+    + "(Un)Ma&ximize"     MyMaximize
+    + ""                  Nop  
+    + "&Delete"           Delete
+    + "Destroy"           Destroy     
+    + ""                  Nop
+    + "Refresh Window"    RefreshWindow
+    + ""                  Nop
+    + "Send to Page"      Popup MenuFvwmSendTo 
+    + ""                  Nop
+    + "&Close"            Close
+
+
+DestroyMenu MenuFvwmSendTo
+AddToMenu MenuFvwmSendTo
++ "Prev"          MoveAndGotoPagePrev
++ "Next"          MoveAndGotoPageNext
++  "Desk &1"      MoveToPage 0 0
++  "Desk &2"      MoveToPage 1 0
++  "Desk &3"      MoveToPage 2 0
++  "Desk &4"      MoveToPage 3 0
++  "Desk &5"      MoveToPage 4 0
++  "Desk &6"      MoveToPage 5 0
++  "Desk &7"      MoveToPage 6 0
++  "Desk &8"      MoveToPage 7 0
++  "Desk &9"      MoveToPage 8 0
++  "Desk &10"     MoveToPage 9 0
++  "Desk &11"     MoveToPage 0 1
++  "Desk &12"     MoveToPage 1 1
++  "Desk &10"     MoveToPage 2 1
++  "Desk &11"     MoveToPage 3 1
++  "Desk &12"     MoveToPage 4 1
++  "Desk &13"     MoveToPage 5 1
++  "Desk &14"     MoveToPage 6 1
++  "Desk &15"     MoveToPage 7 1
++  "Desk &16"     MoveToPage 8 1
++  "Desk &17"     MoveToPage 9 1
++  "Desk &18"     MoveToPage 10 1
+
+DestroyFunc MoveAndGotoPagePrev
+AddToFunc MoveAndGotoPagePrev
++ I MoveToPage wrapx -1w 0
++ I GotoPage wrapx -1w 0
+
+DestroyFunc MoveAndGotoPageNext
+AddToFunc MoveAndGotoPageNext
++ I MoveToPage wrapx +1w 0
++ I GotoPage wrapx +1w 0
+
+AddToMenu Module-Popup "FvwmModules" Title
+    + "Identify"            Module  FvwmIdent
+    + "Talk"                Module  FvwmTalk
+    + ""                    Nop
+    + "WinList"             Module  FvwmWinList
+    + "FvwmConsole"         Module  FvwmConsole -g 80x20 -fg Green -bg Black
+    + ""                    Nop
+    + "Banner"              Module  FvwmBanner
+    + "AutoRaise"           Module  FvwmAuto 200 Raise Nop
+    + "Stop AutoRaise"      KillModule  FvwmAuto
+    + ""                    Nop
+    + "IconBox"             Module  FvwmIconBox
+    + "IconMan"             Module  FvwmIconMan
+    + ""                    Nop
+    + "Fvwm Animate Icons"  Module  FvwmAnimate ModuleAlias
+
+AddToMenu Quit-Verify "Really Quit?" Title  
+    + "Yes, Really Quit. NOW!"  Quit    
+    + ""                        Nop 
+    + "Restart Fvwm"            Restart
+
+#
+# Funções para o Menu.
+#
+Read /etc/X11/fvwm/menudefs.hook Quiet
+Read menudefs.hook Quiet
+
+# Função para gerar um menu de seleção de wallpapers com base nos arquivos
+# contidos em determinado diretório.
+AddToFunc MakeWallPapersMenu
++ I DestroyMenu Recreate MenuWallPapers
++ I AddToMenu MenuWallPapers "WallPapers" Title
+#+ I PipeRead 'for i in $[fvwm_wallpapers]/*; do echo AddToMenu MenuWallPapers "`basename $i`" Exec Esetroot -c $i; done'
++ I PipeRead 'for i in $[fvwm_wallpapers]/*; do echo AddToMenu MenuWallPapers "`basename $i`" Exec $[fvwm_scripts]/wallpaper.sh $i; done'
+
+# Função para gerar um menu de aplicações com base nos arquivos
+# contidos em determinado diretório.
+AddToFunc MakeAppsMenu
+    + I DestroyMenu Recreate ProgramMenu
+    + I AddToMenu ProgramMenu "Apps" Title
+    + I PipeRead 'for i in $[fvwm_apps]/*; do echo AddToMenu ProgramMenu "`basename $i`" Exec "exec `cat $i`"; done'

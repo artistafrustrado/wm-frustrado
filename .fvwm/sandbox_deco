@@ -1,0 +1,114 @@
+#####
+## Window Colorsets
+############
+Colorset 3 fg White, bg Black
+Colorset 4 fg #EEEEEE, bg #CCCCCC
+Colorset 5 fg Red, bg Black
+
+####
+# Window Decor
+###########
+DestroyDecor MyDecor
+AddToDecor   MyDecor
+#+ TitleStyle LeftJustified Height 18
++ TitleStyle LeftJustified Height 15
++ ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 -- Flat
++ ButtonStyle 3 ActiveUp Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
++ ButtonStyle 3 ActiveDown Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
++ ButtonStyle 3 Inactive Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 -- Flat
++ ButtonStyle 5 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
++ ButtonStyle 5 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
++ ButtonStyle 5 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 -- Flat
++ TitleStyle -- Flat
++ BorderStyle Simple -- NoInset Flat
++ ButtonStyle All -- UseTitleStyle
+
+#####
+# Ukkosta Decor
+###########
+DestroyDecor UkkostaDecor
+AddToDecor   UkkostaDecor
+#+ TitleStyle LeftJustified Height 24
++ TitleStyle LeftJustified Height 18
+#+ TitleStyle RightJustified Height 48
++ ButtonStyle 1 \
+        ActiveUp     (Pixmap $[fvwm_windows]/Frustrado/button/close-activeup.png -- Flat) \
+        ActiveDown   (Pixmap $[fvwm_windows]/Frustrado/button/close-activedown.png -- Flat) \
+        Inactive     (Pixmap $[fvwm_windows]/Frustrado/button/inactive.png -- Flat)
++ ButtonStyle 3 \
+        ActiveUp     (Pixmap $[fvwm_windows]/Frustrado/button/iconify-activeup.png -- Flat) \
+        ActiveDown   (Pixmap $[fvwm_windows]/Frustrado/button/iconify-activedown.png -- Flat) \
+        Inactive     (Pixmap $[fvwm_windows]/Frustrado/button/inactive.png -- Flat)
++ ButtonStyle 5 \
+        ActiveUp     (Pixmap $[fvwm_windows]/Frustrado/button/maximize-activeup.png -- Flat) \
+        ActiveDown   (Pixmap $[fvwm_windows]/Frustrado/button/maximize-activedown.png -- Flat) \
+        Inactive     (Pixmap $[fvwm_windows]/Frustrado/button/inactive.png -- Flat)
++ ButtonStyle 1 - Clear
++ ButtonStyle 3 - Clear MwmDecorMin
++ ButtonStyle 5 - Clear MwmDecorMax
++ TitleStyle AllActive MultiPixmap \
+        Main AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-main-active.xpm, \
+        LeftEnd AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-leftend-active.xpm, \
+        RightEnd AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-rightend-active.xpm, \
+        UnderText AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-undertext-active.xpm, \
+        LeftOfText AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-leftoftext-active.xpm, \
+        RightOfext AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-rightoftext-active.xpm
++ TitleStyle AllInactive MultiPixmap \
+        Main AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-main-inactive.xpm, \
+        LeftEnd AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-leftend-inactive.xpm, \
+        RightEnd AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-rightend-inactive.xpm, \
+        UnderText AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-undertext-inactive.xpm, \
+        LeftOfText AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-leftoftext-inactive.xpm, \
+        RightOfext AdjustedPixmap $[fvwm_windows]/Frustrado/decor/title-rightoftext-inactive.xpm
+
+#####
+# Window Styles
+###########
+Style "*" UseDecor MyDecor
+Style "*" Font "xft:Sans:Bold:size=8:minspace=False:antialias=True"
+Style "*" BorderWidth 1, HandleWidth 1
+Style "*" MWMBorder, FirmBorder
+Style "*" Colorset 4
+Style "*" HilightColorset 3
+#Style "*" BorderColorset 5
+Style "*" BorderColorset 4
+#Style "*" HilightBorderColorset 4
+Style "*" HilightBorderColorset 5
+
+#####
+# Menu Colorsets
+###########
+Colorset 7 fg Black, bg #e6e7d7, sh Black, hi #202070
+Colorset 8 fg DarkRed, bg #e6e7d7, sh Black, hi #202070
+
+Colorset 7 RootTransparent, fg Black, bg average, sh Black, \
+  hi #202070, Tint White 60, bgTint White 60
+
+Colorset 7 fg Black, Translucent White 75, \
+  hi Black, sh Black
+
+
+#####
+# MenuStyles
+###########
+#MenuStyle * PopupDelayed, PopupDelay 300, PopdownImmediately
+#MenuStyle * PopupOffset -5 100, TitleWarpOff
+#MenuStyle * TitleUnderlines2, SeparatorsLong, TrianglesSolid
+#MenuStyle * AnimationOff, AutomaticHotkeysOff
+#MenuStyle * BorderWidth 2
+#MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
+#MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
+#MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
+#MenuStyle * MenuColorset 7
+#MenuStyle * ActiveFore, Hilight3DOff
+#MenuStyle * ActiveColorset 8
+#MenuStyle * Font "Shadow=2:xft:Sans:Bold:size=11:antialias=True"
+
+#####
+# Module Colorsets
+###########
+#Colorset 9 fg rgb:00/00/00, hi rgb:00/00/00, sh rgb:00/00/00, bg rgb:e9/e9/d9
+#Colorset 10 fg rgb:00/00/00, hi rgb:dd/00/00, sh rgb:dd/00/00, bg rgb:fb/fc/ec
+

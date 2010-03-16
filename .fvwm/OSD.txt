@@ -1,0 +1,20 @@
+Essas são as configurações que estão sendo usadas para o
+plugin OSD do XMMS.
+
+[osd]
+colour=orange
+font=-misc-fixed-medium-r-normal-*-15-*-*-*-c-*-iso10646-1
+timeout=5
+offset=15
+h_offset=0
+shadow_offset=1
+outline_offset=0
+pos=1
+align=1
+show_volume=1
+show_balance=1
+show_pause=1
+show_trackname=1
+show_stop=1
+show_repeat=1
+show_shuffle=1

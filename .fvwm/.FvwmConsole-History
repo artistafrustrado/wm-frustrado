@@ -1,0 +1,100 @@
+Module FvwmButtons -g 178x207 LaunchTime
+5~5~5~DestroyModuleConfig LaunchTime: *
+*LaunchTime: Rows 7
+*LaunchTime: Columns 3
+*LaunchTime: (3x1, Swallow "xclock" `Exec xclock -bg '#31658c' -fg white -digital -face 'Aquafont:size=11' -strftime '%a, %d %b %Y %H:%M'`)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+DestroyModuleConfig LaunchTime: *
+*LaunchTime: Rows 7
+*LaunchTime: Columns 3
+*LaunchTime: (3x1, Swallow "xclock" `Exec xclock -bg '#31658c' -fg white -digital -face 'Aquafont:size=11' -strftime '%a, %d %b %Y %H:%M'`)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+*LaunchTime: (1x2)
+Module FvwmButtons -g 178x207 LaunchTime
+DestroyModule FvwmButtons
+Destroy Module FvwmButtons
+read sandbox_deco
+exec pidgin
+exec pidgin --geometry 500x500x0x0
+exec pidgin -geometry 500x500x0x0
+-geometry 500x500x0x0
+exec pidgin -geometry 500x500
+exec pidgin -geometry 500x500
+exec pidgin
+pidgin maxime
+exec pidgin
+pidgin maximize
+exec pidgin maximize
+read fvwm_taskbar
+read fvwm_taskbar
+read fvwm_taskbar
+read fvwm_taskbar
+   DestroyFunc MoveWindowTopRight
+    AddToFunc   MoveWindowTopRight
+    + I ThisWindow AnimatedMove -0 +0
+    DestroyModuleConfig FE-movewindow: *
+    *FE-movewindow: Cmd Function
+    *FE-movewindow: add_window MoveWindowTopRight
+I ThisWindow (pidgin)
++I ThisWindow (pidgin)
++I pidgin
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, 600x800-0-0
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, 600x800
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, geometry 600x800
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, geometry 600,800
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, geometry
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, Maximize
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, Maximize
+-geometry 400x275-100+98
+exec pidgin -geometry 400x275-100+98
+Exec pidgin -geometry 400x275-100+98
+Exec pidgin
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, CenterWindow
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, PositionPlacement Center
+Style "pidgin"          GrabFocus, BorderWidth 0, HandleWidth 0, StartsOnPage 4 1, PositionPlacement Center
+pidgin Maximize True
+exec pidgin Maximize True
+    DestroyModuleConfig FE-startMaximized: *
+    *FE-startMaximized: Cmd Function
+    *FE-startMaximized: add_window StartAppMaximized
+    Module FvwmEvent FE-startMaximized
+    DestroyFunc StartAppMaximized
+    AddToFunc   StartAppMaximized
+    + I ThisWindow (some_name, !Maximized) Maximize
+    + I ThisWindow (pidgin, !Maximized) Maximize
+Key KP_2	A S beep
+Key KP_2	A 4 beep
+22
+Key KP_2	A 4 beep
+2
+2
+Key KP_2	A M2   beep
+2
+2
+2
+Key KP_Down	A M2   beep
+1
+3
+Key KP_Down	A M2   exec xcalc
+Key KP_Down	4 M2   exec xcalc
+Key KP_2	4 M2   exec xcalc
+22
+Key KP_2	A M2   exec xcalc
+Key KP_1 A 4 exec xcalc
+Key KP_1 	A 42 exec xcalc

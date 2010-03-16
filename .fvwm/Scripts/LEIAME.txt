@@ -1,0 +1,6 @@
+Tudo o que esses Scripts fazem pode tranqüilamente ser feito
+dentro do próprio arquivo de configuração do FVWM, através da
+utilização de funções e outros recursos.
+
+Optei por fazer Scripts externos meramente por uma questão de
+organização pessoal e/ou conveniência.
